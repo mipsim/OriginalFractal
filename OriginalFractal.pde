@@ -1,0 +1,53 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public void setup()
+{
+	size(600, 600);
+}
+
+
+public void draw()
+{
+	fractal(0, 0, 600);
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public void action()
+{
+	
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public void fractal(int x, int y, int length) 
+{
+	if ( length <= 20)
+	{
+		rect(x, y, length, length);
+	}
+
+	else 
+	{
+		fill(0);
+		fractal(x, y, length/2);
+		fill(255, 0, 0);
+		ellipse(x, y, length, length);
+		fill(255);
+		ellipse(x+length/12, y+length/12, length/2, length/2);
+		fill(255);
+		ellipse(x-length/8, y-length/4, length/4, length/4);
+		fill(255);
+		fractal(x+length/2, y, length/2);
+		fill(0);
+		fractal(x, y+length/2, length/2);
+		fill(255);
+		fractal(x+length/2, y+length/2, length/2);
+		
+	}
+}
