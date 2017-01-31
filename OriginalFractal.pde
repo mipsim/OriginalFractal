@@ -9,7 +9,8 @@ public void setup()
 
 public void draw()
 {
-	fractal(0, 0, 600);
+	background(0);
+	fractal(300, 300, 200, 5);
 }
 
 
@@ -18,36 +19,49 @@ public void draw()
 
 public void action()
 {
-	
+	if (mousePressed == true)
+	{
+		
+	}
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public void fractal(int x, int y, int length) 
+public void fractal(int x, int y, int siz, int strok) 
 {
-	if ( length <= 20)
-	{
-		rect(x, y, length, length);
-	}
+	noStroke();
 
-	else 
+	//bg
+	fill(0);
+	ellipse(x, y, siz*1.5, siz*1.5);
+
+	//main
+	fill(255);
+	ellipse(x, y, siz, siz);
+	//ellipse(x, y + siz/2, siz/4, siz/4);
+	//ellipse(x + siz/4, y + siz/2, siz/4, siz/4);	
+	//ellipse(x - siz/4, y + siz/2, siz/4, siz/4);
+
+	//detail
+	//stroke(0);
+	//strokeWeight(strok);
+	//line(x - siz/4, y, x - siz/8, y + siz/4);
+	//line(x - siz/4, y + siz/4, x - siz/8, y);
+	//line(x + siz/4, y, x + siz/8, y + siz/4);
+	//line(x + siz/4, y + siz/4, x + siz/8, y);
+
+	//recursion
+	if (siz > 10)
 	{
-		fill(0);
-		fractal(x, y, length/2);
-		fill(255, 0, 0);
-		ellipse(x, y, length, length);
-		fill(255);
-		ellipse(x+length/12, y+length/12, length/2, length/2);
-		fill(255);
-		ellipse(x-length/8, y-length/4, length/4, length/4);
-		fill(255);
-		fractal(x+length/2, y, length/2);
-		fill(0);
-		fractal(x, y+length/2, length/2);
-		fill(255);
-		fractal(x+length/2, y+length/2, length/2);
-		
+		fractal(x + siz, y, siz/2, strok - 1);
+		fractal(x , y + siz, siz/2, strok - 1);
+		fractal(x - siz , y, siz/2, strok - 1);
+		fractal(x , y - siz, siz/2, strok - 1);
+		fractal(x + siz, y + siz, siz/2, strok - 1);
+		fractal(x + siz, y - siz, siz/2, strok - 1);
+		fractal(x - siz, y + siz, siz/2, strok - 1);
+		fractal(x - siz, y - siz, siz/2, strok - 1);
 	}
 }
