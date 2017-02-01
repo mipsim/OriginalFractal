@@ -9,8 +9,8 @@ public void setup()
 
 public void draw()
 {
-	background(0);
-	fractal(300, 300, 200, 5);
+	background(200, 215,255);
+	fractal(300, 300, 150, 0, 0, (int)(Math.random()*400));
 }
 
 
@@ -19,49 +19,37 @@ public void draw()
 
 public void action()
 {
-	if (mousePressed == true)
-	{
-		
-	}
+	
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-public void fractal(int x, int y, int siz, int strok) 
+public void fractal(int x, int y, int siz, int red, int green, int blue) 
 {
 	noStroke();
 
 	//bg
-	fill(0);
+	fill(0, 0, (int)(Math.random()*50));
 	ellipse(x, y, siz*1.5, siz*1.5);
 
 	//main
-	fill(255);
+	fill((int)(Math.random()*255+200), (int)(Math.random()*255+100), 0);
 	ellipse(x, y, siz, siz);
-	//ellipse(x, y + siz/2, siz/4, siz/4);
-	//ellipse(x + siz/4, y + siz/2, siz/4, siz/4);	
-	//ellipse(x - siz/4, y + siz/2, siz/4, siz/4);
-
-	//detail
-	//stroke(0);
-	//strokeWeight(strok);
-	//line(x - siz/4, y, x - siz/8, y + siz/4);
-	//line(x - siz/4, y + siz/4, x - siz/8, y);
-	//line(x + siz/4, y, x + siz/8, y + siz/4);
-	//line(x + siz/4, y + siz/4, x + siz/8, y);
+	fill(red, green, blue);
+	ellipse(x, y, siz/2, siz/2);
 
 	//recursion
 	if (siz > 10)
 	{
-		fractal(x + siz, y, siz/2, strok - 1);
-		fractal(x , y + siz, siz/2, strok - 1);
-		fractal(x - siz , y, siz/2, strok - 1);
-		fractal(x , y - siz, siz/2, strok - 1);
-		fractal(x + siz, y + siz, siz/2, strok - 1);
-		fractal(x + siz, y - siz, siz/2, strok - 1);
-		fractal(x - siz, y + siz, siz/2, strok - 1);
-		fractal(x - siz, y - siz, siz/2, strok - 1);
+		fractal(x + siz, y, siz/2, red/2, green/2, blue/2);
+		fractal(x, y + siz, siz/2, red/2, green/2, blue/2);
+		fractal(x - siz, y, siz/2, red/2, green/2, blue/2);
+		fractal(x, y - siz, siz/2, red/2, green/2, blue/2);
+		fractal(x + siz, y + siz, siz/2, red/2, green/2, blue/2);
+		fractal(x + siz, y - siz, siz/2, red/2, green/2, blue/2);
+		fractal(x - siz, y + siz, siz/2, red/2, green/2, blue/2);
+		fractal(x - siz, y - siz, siz/2, red/2, green/2, blue/2);
 	}
 }
